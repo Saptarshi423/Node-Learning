@@ -1,5 +1,0 @@
-{
-    "env":{
-        "MONGO_ATLAS_PW" : "MongoDB1234",
-        "username": "saptarshi"    }
-}
