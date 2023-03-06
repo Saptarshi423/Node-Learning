@@ -2,9 +2,19 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const mongoose = require('mongoose');
 
 const productRoutes = require("./api/routes/products");
 const orderRoutes = require("./api/routes/order");
+
+//Connect to mongodb
+mongoose.connect('mongodb+srv://saptarshi:MongoDB1234@cluster0.kjyiblw.mongodb.net/?retryWrites=true&w=majority')
+.then(()=>{
+  console.log("Connected to db")
+})
+.catch((err)=>{
+  console.log(err);
+})
 
 // Middleware to log incoming route of req
 app.use(morgan("dev"));
