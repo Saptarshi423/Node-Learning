@@ -38,10 +38,12 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware to forward incoming requests
+// Middleware to forward incoming requests to the required routes.
 app.use("/products", productRoutes);
 app.use("/order", orderRoutes);
 
+
+//handle no route match
 app.use((req, res, next) => {
   const error = new Error("Not found");
   error.status = 404;

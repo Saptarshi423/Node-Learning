@@ -1,31 +1,36 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/',(req,res,next)=>{
+// Handle incoming GET requests to /orders
+router.get('/', (req, res, next) => {
     res.status(200).json({
-        message: 'Order fetched'
-    })
+        message: 'Orders were fetched'
+    });
 });
 
-router.post('/',(req,res,next)=>{
+router.post('/', (req, res, next) => {
+    const order = {
+        productId: req.body.productId,
+        quantity: req.body.quantity
+    };
     res.status(201).json({
-        message: 'Order posted'
-    })
+        message: 'Order was created',
+        order: order
+    });
 });
 
-router.get('/:orderId', (req,res,next)=>{
+router.get('/:orderId', (req, res, next) => {
     res.status(200).json({
-        message: 'order details',
+        message: 'Order details',
         orderId: req.params.orderId
-    })
-})
+    });
+});
 
-router.delete('/:orderId', (req,res,next)=>{
+router.delete('/:orderId', (req, res, next) => {
     res.status(200).json({
-        message: 'order deleted',
+        message: 'Order deleted',
         orderId: req.params.orderId
-    })
-})
-
+    });
+});
 
 module.exports = router;
